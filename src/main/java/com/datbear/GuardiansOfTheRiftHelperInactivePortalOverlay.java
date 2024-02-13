@@ -78,7 +78,11 @@ public class GuardiansOfTheRiftHelperInactivePortalOverlay extends Overlay {
         String mins = String.format("%01d", timeSincePortal / 60);
         String secs = String.format("%02d", timeSincePortal % 60);
         String text = mins + ":" + secs;
-
+        // fix for time since portal showing negative time
+         if (timeSincePortal < 0) {
+                return null;
+         }
+        
         int textHeight = 24;
         Rectangle rect = new Rectangle(x, y + height, width, textHeight);
 
